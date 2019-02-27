@@ -17,7 +17,7 @@ tld="your.domain.com"
 model=$(ioreg -l | grep "product-name" | cut -d ""="" -f 2 | sed -e s/[^[:alnum:]]//g | sed s/[0-9]//g) 
 
 #and it's serial number...
-serial=$(ioreg -l | grep "IOPlaLormSerialNumber" | cut -d ""="" -f 2 | sed -e s/[^[:alnum:]]//g) 
+serial=$(ioreg -l | grep "IOPlatformSerialNumber" | cut -d ""="" -f 2 | sed -e s/[^[:alnum:]]//g) 
 
 # renaming based on model ie. prefix-computerserial.tld
 case "$model" in
