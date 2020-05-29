@@ -5,7 +5,6 @@
 # Create a variable for the logged in loggedinuser
 loggedinloggedinuser=`python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleloggedinuser; import sys; loggedinusername = (SCDynamicStoreCopyConsoleloggedinuser(None, None, None) or [None])[0]; loggedinusername = [loggedinusername,""][loggedinusername in [u"loginwindow", None, u""]]; sys.stdout.write(loggedinusername + "\n");'`
 
-
 # Change directory to the local loggedinuser's Signature file
 cd ~/Desktop
 
