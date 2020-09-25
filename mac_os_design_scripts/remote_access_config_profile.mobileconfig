@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadDescription</key>
+            <string>Screen Sharing Enable</string>
+            <key>PayloadDisplayName</key>
+            <string>Screen Sharing Enable</string>
+            <key>PayloadIdentifier</key>
+            <string>63DFC01F-E3AF-43FD-941C-317AA4309C33</string>
+            <key>PayloadOrganization</key>
+            <string>company_name</string>
+            <key>PayloadType</key>
+            <string>com.apple.TCC.configuration-profile-policy</string>
+            <key>PayloadUUID</key>
+            <string>C99E0187-FB1B-4F5A-A14B-344F9E2C59C9</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>Services</key>
+            <dict>
+                <key>PostEvent</key>
+  <array>
+    <dict>
+      <key>Allowed</key>
+      <true/>
+      <key>CodeRequirement</key>
+      <string>identifier "com.apple.screensharing.agent" and anchor apple</string>
+      <key>Comment</key>
+      <string>Allow Control mode when starting Remote Management via kickstart</string>
+      <key>Identifier</key>
+      <string>com.apple.screensharing.agent</string>
+      <key>IdentifierType</key>
+      <string>bundleID</string>
+    </dict>
+  </array>
+            </dict>
+        </dict>
+    </array>
+    <key>PayloadDescription</key>
+    <string>Screen Sharing Enable</string>
+    <key>PayloadDisplayName</key>
+    <string>Screen Sharing Enable</string>
+    <key>PayloadIdentifier</key>
+    <string>63DFC01F-E3AF-43FD-941C-317AA4309C33</string>
+    <key>PayloadOrganization</key>
+    <string>company_name</string>
+    <key>PayloadType</key>
+    <string>com.apple.TCC.configuration-profile-policy</string>
+    <key>PayloadUUID</key>
+    <string>B8711922-EB7B-4BB3-A9AF-B430CFB3ED97</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+    <key>payloadScope</key>
+    <string>system</string>
+</dict>
+</plist>

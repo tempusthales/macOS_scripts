@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>Services</key>
+<dict>
+  <key>PostEvent</key>
+  <array>
+    <dict>
+      <key>Allowed</key>
+      <true/>
+      <key>CodeRequirement</key>
+      <string>identifier "com.apple.screensharing.agent" and anchor apple</string>
+      <key>Comment</key>
+      <string>Allow Control mode when starting Remote Management via kickstart</string>
+      <key>Identifier</key>
+      <string>com.apple.screensharing.agent</string>
+      <key>IdentifierType</key>
+      <string>bundleID</string>
+      <string>com.apple.TCC.configuration-profile-policy
+    </dict>
+  </array>
+</dict>
+</dict> 
+</plist>
