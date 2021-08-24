@@ -1,18 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 
 # Script for creating Outlook Signatures from AD User Data
 
 # Create a variable for the logged in loggedinuser
-loggedinloggedinuser=`python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleloggedinuser; import sys; loggedinusername = (SCDynamicStoreCopyConsoleloggedinuser(None, None, None) or [None])[0]; loggedinusername = [loggedinusername,""][loggedinusername in [u"loginwindow", None, u""]]; sys.stdout.write(loggedinusername + "\n");'`
+currentUser=$( echo "show State:/Users/ConsoleUser" | scutil | awk '/Name :/ && ! /loginwindow/ { print $3 }' )
 
 # Change directory to the local loggedinuser's Signature file
 cd ~/Desktop
 
 # Read Active Directory to find out the values for this loggedinuser
-realname=`dscl . -read /loggedinusers/$loggedinloggedinuser RealName`
-jobtitle=`dscl . -read /loggedinusers/$loggedinuser JobTitle`
-phonenumber=`dscl . -read /loggedinusers/$loggedinuser PhoneNumber`
-emailaddress=`dscl . -read /loggedinusers/$loggedinuser EMailAddress`
+realname=`dscl . -read /loggedinusers/$currentUser RealName`
+jobtitle=`dscl . -read /loggedinusers/$currentUser JobTitle`
+phonenumber=`dscl . -read /loggedinusers/$currentUser PhoneNumber`
+emailaddress=`dscl . -read /loggedinusers/$currentUser EMailAddress`
 
 # Change the signature file into html
 mv x33_66.olk14Signature x33_66.html
