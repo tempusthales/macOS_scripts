@@ -78,7 +78,8 @@ cat > /Library/.company_name/Scripts/dockfix.sh << 'EOF'
 # Acquire variables related to user
 ##################################################################################################################
 # get currently logged in user
-currentUser=$(/usr/bin/python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
+# currentUser=$(/usr/bin/python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
+currentUser=$( echo "show State:/Users/ConsoleUser" | scutil | awk '/Name :/ && ! /loginwindow/ { print $3 }' )
 # get user's home folder
 currentUserHome=$(dscl . -read /Users/$currentUser NFSHomeDirectory | cut -d " " -f 2)
 ###################################################################################################################
@@ -548,7 +549,7 @@ dockutilAdd "Microsoft Powerpoint" "10"
 # add Microsoft Word
 dockutilAdd "Microsoft Word" "11"
 
-# add Cisco Anyconnect if computer is portable
+# add VPN Client if computer is portable
 if [[ $(sysctl -n hw.model | grep "Book") != "" ]]; then
   logMessage "Computer is a portable - adding portable-specific items.."
   dockutilAdd "VPN Client" "12"
