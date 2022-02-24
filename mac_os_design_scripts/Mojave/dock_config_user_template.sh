@@ -16,9 +16,9 @@ logMessage () {
 
   mkdir -p $log_path
 
-  date_set="$((date +%Y-%m-%d..%H:%M:%S-%z) 2>&1)"
-  user="$((who -m | awk '{print $1;}') 2>&1)"
-  if [[ "$log_file" == "" ]]; then
+  date_set="$( (date +%Y-%m-%d..%H:%M:%S-%z) 2>&1)"
+  user="$( (who -m | awk '{print $1;}') 2>&1)"
+  if [ "$log_file" = "" ]; then
     # write to stdout (capture by Jamf script logging)
     echo "$date_set    $user    ${0##*/}    $1"
   else
