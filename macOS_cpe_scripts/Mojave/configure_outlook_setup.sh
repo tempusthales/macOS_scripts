@@ -2,7 +2,9 @@
 
 ##################################################################################################################
 # Name:                       configure_outlook_setup.sh
-# Purpose:                    Configures the components that makeup the Outlook setup process.                     
+# Purpose:                    Configures the components that makeup the Outlook setup process.  
+# Important:		      This script is based on the work done by William Smith (Talkingmoose)
+#                             https://github.com/talkingmoose/Outlook-Exchange-Setup-5
 ###################################################################################################################
 # Establish standardized local logging logic
 ###################################################################################################################
