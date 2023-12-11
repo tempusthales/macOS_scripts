@@ -1,0 +1,51 @@
+﻿@*
+ * Copyright (C) 2023 Crypter File Transfer
+ * 
+ * This file is part of the Crypter file transfer project.
+ * 
+ * Crypter is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * The Crypter source code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * You can be released from the requirements of the aforementioned license
+ * by purchasing a commercial license. Buying such a license is mandatory
+ * as soon as you develop commercial activities involving the Crypter source
+ * code without disclosing the source code of your own applications.
+ * 
+ * Contact the current copyright holder to discuss commercial license options.
+ *@
+
+<ModalBehavior @ref="_modalBehaviorRef">
+    <Content>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="my-0">Upload Successful</h3>
+            </div>
+            <div class="modal-body justify-content-center">
+                <p>This shareable link will expire in @_expirationHours hours</p>
+                <div class="copiedTooltip">
+                    <div class="input-group mb-3">
+                        <input class="form-control" value="@_downloadUrl" type="text" name="downloadUrl" id="downloadUrl" readonly @onclick="CopyToClipboardAsync"/>
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button" @onclick="CopyToClipboardAsync">Copy link</button>
+                        </div>
+                    </div>
+
+                    <span class="copiedToolTip toolTipText">Copied</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" @onclick="CloseAsync">Okay</button>
+                </div>
+            </div>
+        </div>
+    </Content>
+</ModalBehavior>

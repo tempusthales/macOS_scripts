@@ -1,0 +1,107 @@
+﻿@*
+ * Copyright (C) 2023 Crypter File Transfer
+ *
+ * This file is part of the Crypter file transfer project.
+ *
+ * Crypter is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * The Crypter source code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * You can be released from the requirements of the aforementioned license
+ * by purchasing a commercial license. Buying such a license is mandatory
+ * as soon as you develop commercial activities involving the Crypter source
+ * code without disclosing the source code of your own applications.
+ *
+ * Contact the current copyright holder to discuss commercial license options.
+ *@
+
+@page "/user/profile/{Username}"
+
+<PageTitle>Crypter - User Profile</PageTitle>
+
+<div class="container my-4">
+    <div class="d-flex justify-content-evenly flex-md-row flex-lg-row flex-xl-row flex-xxl-row flex-column">
+        @if (!_loading)
+        {
+            if (_isProfileAvailable)
+            {
+                <div class="text-center mx-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                    </svg>
+
+                    @if (string.IsNullOrEmpty(_alias))
+                    {
+                        <h3>@($"@{_properUsername}")</h3>
+                    }
+                    else
+                    {
+                        <h3>@_alias</h3>
+                        <h4>@($"@{_properUsername}")</h4>
+                    }
+
+                    @if (_emailVerified)
+                    {
+                        <p class="text-primary">
+                            <i class="bi-envelope-check" style="font-size: 1.3rem; vertical-align: middle;"></i>
+                            Verified
+                        </p>
+                    }
+                    else
+                    {
+                        <p class="text-secondary">
+                            <i class="bi-envelope-x" style="font-size: 1.3rem; vertical-align: middle;"></i>
+                            Not Verified
+                        </p>
+                    }
+                </div>
+
+                <div class="mx-2">
+                    @if (!string.IsNullOrWhiteSpace(_about))
+                    {
+                        <div class="row">
+                            <h3>About</h3>
+                            <p>@_about</p>
+                        </div>
+                    }
+
+                    <div class="row">
+                        <h3>Transfer</h3>
+                        <div class="col-12">
+                            @if (_allowsFiles)
+                            {
+                                <button class="btn btn-secondary mr-3" @onclick="() => FileModal.Open()">Send a file</button>
+                                <UploadFileTransferModal @ref="FileModal"
+                                                         InstanceId="user-profile"
+                                                         RecipientUsername="@_properUsername"
+                                                         RecipientPublicKey="@_userPublicKey"/>
+                            }
+                            @if (_allowsMessages)
+                            {
+                                <button class="btn btn-secondary" @onclick="() => MessageModal.Open()">Send a message</button>
+                                <UploadMessageTransferModal @ref="MessageModal"
+                                                            InstanceId="user-profile"
+                                                            RecipientUsername="@_properUsername"
+                                                            RecipientPublicKey="@_userPublicKey"/>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <h3 class="text-center">Profile not available.</h3>
+            }
+        }
+    </div>
+</div>

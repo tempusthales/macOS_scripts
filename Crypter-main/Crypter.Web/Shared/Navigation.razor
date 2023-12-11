@@ -1,0 +1,102 @@
+﻿@*
+ * Copyright (C) 2023 Crypter File Transfer
+ * 
+ * This file is part of the Crypter file transfer project.
+ * 
+ * Crypter is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * The Crypter source code is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * You can be released from the requirements of the aforementioned license
+ * by purchasing a commercial license. Buying such a license is mandatory
+ * as soon as you develop commercial activities involving the Crypter source
+ * code without disclosing the source code of your own applications.
+ * 
+ * Contact the current copyright holder to discuss commercial license options.
+ *@
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse justify-content-end" id="mainNavigation">
+    <ul hidden="@(!_showNavigation)" class="navbar-nav ms-auto mb-2 mb-lg-0">
+        @if (_showUserNavigation)
+        {
+            <li class="nav-item m-1 my-lg-0">
+                <form class="d-flex h-100" @onsubmit:preventDefault @onsubmit="@OnSearchClicked">
+                    <div class="input-group">
+                        <span class="input-group-text bi-search" id="search-addon"></span>
+                        <input style="width: 20em; max-width: 20em;" type="text" class="form-control" placeholder="Find a user" aria-label="Search" @bind="_searchKeyword" aria-describedby="search-addon">
+                    </div>
+                </form>
+            </li>
+
+            <li class="nav-item m-1 my-lg-0">
+                <a class="nav-link text-light" href="/user/contacts">
+                    <i class="bi-people me-2"></i>Contacts
+                </a>
+            </li>
+
+            <li class="nav-item m-1 my-lg-0">
+                <a class="nav-link text-light" href="/user/transfers">
+                    <i class="bi-inboxes me-2"></i>Transfers
+                </a>
+            </li>
+
+            <li class="nav-item m-1 my-lg-0 dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarEncryptDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi-cloud-upload me-2"></i>Encrypt
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a class="dropdown-item" href="#" @onclick:preventDefault @onclick="@OnEncryptFileClicked">File</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" @onclick:preventDefault @onclick="@OnEncryptMessageClicked">Message</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item m-1 my-lg-0 dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarUserDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi-person-circle me-2"></i>@_username
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a class="dropdown-item" href="@_profileUrl">Profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/user/settings">Settings</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" @onclick:preventDefault @onclick="@OnLogoutClicked">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item m-1 my-lg-0">
+                <a class="btn btn-secondary nav-link text-white" href="/login">Login</a>
+            </li>
+            <li class="nav-item m-1 my-lg-0">
+                <a class="btn btn-primary nav-link text-white" href="/register">Sign Up</a>
+            </li>
+        }
+    </ul>
+</div>
+
+<UploadFileTransferModal @ref="FileTransferModal" InstanceId="navbar" RecipientUsername="Maybe<string>.None" RecipientPublicKey="Maybe<byte[]>.None"/>
+<UploadMessageTransferModal @ref="MessageTransferModal" InstanceId="navbar" RecipientUsername="Maybe<string>.None" RecipientPublicKey="Maybe<byte[]>.None"/>

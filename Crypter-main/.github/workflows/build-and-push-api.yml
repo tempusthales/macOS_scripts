@@ -1,0 +1,61 @@
+name: Build and push an image of Crypter.API to GitHub Container Registry
+
+on:
+  release:
+    types:
+      - published
+  
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Define the environment name'
+        required: true
+        type: choice
+        options:
+          - production
+          - development
+
+env:
+  registry: ghcr.io/${{ github.repository_owner }}
+
+jobs:
+  build-and-push-api-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      project_root: Crypter.API/
+    environment:
+      name: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.environment) || 'production' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.registry }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.registry }}/${{ vars.API_IMAGE_NAME }}
+          flavor: |
+            latest=${{ (github.event_name == 'workflow_dispatch' && 'true') || 'auto' }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Crypter.API/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
