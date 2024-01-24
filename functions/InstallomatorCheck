@@ -1,0 +1,55 @@
+function InstallomatorCheck() {
+
+    # Get the URL of the latest PKG From the Installomator GitHub repo
+    InstallomatorURL=$(curl -L --silent --fail "https://api.github.com/repos/Installomator/Installomator/releases/latest" | awk -F '"' "/browser_download_url/ && /pkg\"/ { print \$4; exit }")
+
+    # Expected Team ID of the downloaded PKG
+    expectedInstallomatorTeamID="JME5BW3F3R"
+
+    # Check for Dialog and install if not found
+    if [ ! -e "/usr/local/Installomator/Installomator.sh" ]; then
+
+        updateScriptLog "PRE-FLIGHT CHECK: Installomator not found. Installing..."
+
+        # Create temporary working directory
+        workDirectory=$( /usr/bin/basename "$0" )
+        tempDirectory=$( /usr/bin/mktemp -d "/private/tmp/$workDirectory.XXXXXX" )
+
+        # Download the installer package
+        /usr/bin/curl --location --silent "$InstallomatorURL" -o "$tempDirectory/Installomator.pkg"
+
+        # Verify the download
+        teamID=$(/usr/sbin/spctl -a -vv -t install "$tempDirectory/Installomator.pkg" 2>&1 | awk '/origin=/ {print $NF }' | tr -d '()')
+
+        # Install the package if Team ID validates
+        if [[ "$expectedDialogTeamID" == "$teamID" ]]; then
+
+            /usr/sbin/installer -pkg "$tempDirectory/Installomator.pkg" -target /
+            sleep 2
+            InstallomatorVersion=$( /usr/local/Installomator/Installomator.sh version )
+            updateScriptLog "PRE-FLIGHT CHECK: Installomator version ${InstallomatorVersion} installed; proceeding..."
+
+        else
+
+            # Display a so-called "simple" dialog if Team ID fails to validate
+            osascript -e 'display dialog "Please advise IT ANSWERS of the following error:\r\r• Dialog Team ID verification failed\r\r" with title "Setup Your Mac: Error" buttons {"Close"} with icon caution'
+            quitScript "1"
+
+        fi
+
+        # Remove the temporary working directory when done
+        /bin/rm -Rf "$tempDirectory"
+
+    else
+
+        updateScriptLog "PRE-FLIGHT CHECK: Installomator version $(/usr/local/Installomator/Installomator.sh version) found; proceeding..."
+
+    fi
+
+}
+
+if [[ ! -e "/usr/local/Installomator/Installomator.sh" ]]; then
+    InstallomatorCheck
+else
+    updateScriptLog "PRE-FLIGHT CHECK: Installomator version $(/usr/local/Installomator/Installomator.sh version) found; proceeding..."
+fi
