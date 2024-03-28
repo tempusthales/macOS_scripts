@@ -1,6 +1,6 @@
 # Wallpapers for macOS Sonoma
 
-### PS. As usual **test**, **test**, **test** if you blow up your endpoints to mars, don't blame me. Thats on you. (Although lets admit, that would look cool...).
+##### PS. As usual **test**, **test**, **test** if you blow up your endpoints to mars, don't blame me. Thats on you. (Although lets admit, that would look cool...).
 
 Apple being Apple screwed how wallpapers work in macOS Sonoma programmatically.  To say they screwed the pooch is being kind.
 
@@ -27,7 +27,7 @@ As such I created a two step process in order to capture wallpapers from a sourc
 
 # How to deploy this on JAMF Pro (or Jamf Cloud)
 
-### I use Jamf Cloud, I'm sure if you use some other MDM if you follow the next steps you will be able to deploy it just fine.
+##### I use Jamf Cloud, I'm sure if you use some other MDM if you follow the next steps you will be able to deploy it just fine.
 
 1. Create the script `addwallpaper_to_sonoma.bash` on `Settings > Scripts > +New Script` blah blah you know this...
 2. Upload your `base64_output.txt` pkg to Jamf via `Settings > Packages > +New Package` blah blah you (also should) know this...
