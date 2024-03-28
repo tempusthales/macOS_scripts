@@ -7,17 +7,17 @@
 # ShellChecking done with Grimoire GPT - https://chat.openai.com/g/g-n7Rs0IK86-grimoire
 
 # Specify the directory containing the images
-IMAGE_DIR="/PATH/TO/WALLPAPER/LOCATION"
+IMAGE_DIR="/Users/gpalau/Pictures/tesla_wallpapers"
 
 # Image file extension you want to convert
 IMAGE_EXTENSION="jpg"
 
 # Output directory for base64 output
-OUTPUT_DIR="/var/log/company/output"
+OUTPUT_DIR="/var/log/tesla/output"
 OUTPUT_FILE="$OUTPUT_DIR/base64_output.txt"
 
 # Log directory
-LOG_DIR="/var/log/company"
+LOG_DIR="/var/log/tesla"
 scriptLog="$LOG_DIR/wallpapersetup-$(date "+%Y-%m-%d-%H:%M").log"
 
 # Ensure the output and log directories exist, create if not
