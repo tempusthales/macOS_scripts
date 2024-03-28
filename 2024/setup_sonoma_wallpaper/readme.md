@@ -42,6 +42,9 @@ I don't plan to have a channel dedicated for this on MacAdmins Slack but if you 
 
 I can help you, but again, **test**, **test**, **test** and bring your logs. No logs, no laundry.
 
+# Screensavers on Sonoma for when? 
+Soon(tm).
+
 Cheers!
 
 ###### PS If you are one of those and wants to buy me [Ko-Fi](https://ko-fi.com/tempusthales).
