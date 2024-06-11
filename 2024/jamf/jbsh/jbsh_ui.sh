@@ -2,6 +2,7 @@
 # shellcheck shell=bash
 
 # Author: Tempus Thales
+# Contributors: MacAdmins Community: Howie Isaaks, @HowieIsaacks, @BigMacAdmin and Ellie Romero ~ Jamf 
 # Date: 06/11/2024
 # Version: 2024.06.05-2.0
 # Description: Renew Management Framework via Serial Number.
@@ -153,7 +154,9 @@ dialogCheck
 # Function to display the dialog and capture the output
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+
 display_dialog() {
+    # Using --textfield <msg>,editor Thanks! @BigMacAdmin 
     dialogOutput=$(/usr/local/bin/dialog "${dialogUtility[@]}" --textfield "To use it please enter the serial number(s) of the devices you wish to re-install the Jamf Binary on.  If more than one serial please separate them with commas.  Example: serial1, serial2, serial3 etc.",editor,required)
     dialogExitCode=$?
     
