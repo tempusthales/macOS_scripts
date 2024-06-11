@@ -36,27 +36,32 @@ dialogCommandFile="/tmp/dialog_command_file"
 
 # dialog Title, Message
 title="Jamf Binary Self Heal Utility"
-message="The Jamf Binary Self Heal utility will remotely install the Jamf Binary on computers that are unable to check-in, run policies, or update inventory."
+message="\n\nThe **Jamf Binary Self Heal** utility will remotely install the Jamf Binary on computers that are unable to check-in, run policies, or update inventory.  \n\n### Instructions\n\nTo use it please enter the serial number(s) of the devices you wish to re-install the Jamf Binary on.  \n* For single serials just enter it and press OK.\n* For more than one serial please separate with commas:"
+textField="Example: serial1, serial2, serial3, etc."
+infoBox="### Advanced Support\n\nIf the utility fails, open Terminal.app in the affected device: \n- \`sudo jamf removeFramework\`\n- \`sudo profiles renew -type enrollment\`\n- \`sudo jamf policy\`\n\n#### Confluence Link:\n- [A link that will open in the default browser](https://some.link.com/)"
 
-# Construct the dialogUtility command using an array
 dialogUtility=(
-    --title "$title"
-    --titlefont "colour=#00A4C7,weight=light,size=25"
-    --message "$message"
-    --messagefont "weight=medium,size=14"
-    --alignment "left"
-    --infotext "$scriptVersion"
-    --icon "$icon"
-    --iconsize '150'
-    --button1text "Ok"
-    --button2text "Quit"
-    --button2
-    --moveable
-    --ontop
-    --width '640'
-    --height '480'
-    --commandfile "$dialogCommandFile"
+	--title "$title"
+	--titlefont "colour=#00A4C7,weight=light,size=25"
+	--message "$message"
+	--messagefont "weight=medium,size=14"
+	--textfield "$textField",editor,required
+	--alignment "left"
+	--infotext "$scriptVersion"
+	--icon "$icon"
+	--infobox "$infoBox"
+	--displaylog
+	--iconsize '150'
+	--button1text "Ok"
+	--button2text "Quit"
+	--button2
+	--moveable
+	--ontop
+	--width '800'
+	--height '550'
+	--commandfile "$dialogCommandFile"
 )
+
 
 ####################################################################################################
 # Pre-flight Checks
