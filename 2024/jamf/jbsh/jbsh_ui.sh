@@ -2,7 +2,7 @@
 # shellcheck shell=bash
 
 # Author: Tempus Thales
-# Contributors: MacAdmins Community: Howie Isaaks, @HowieIsaacks, @BigMacAdmin and Ellie Romero ~ Jamf 
+# Contributors: MacAdmins Community: @HowieIsaacks, @BigMacAdmin and Ellie Romero ~ Jamf 
 # Date: 06/11/2024
 # Version: 2024.06.05-2.0
 # Description: Renew Management Framework via Serial Number.
