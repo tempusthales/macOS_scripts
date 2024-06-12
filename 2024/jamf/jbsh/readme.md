@@ -41,7 +41,8 @@ Send Computer Remote Command to Install Package (Read)
 PS. Don't use a full fledged admin account, just use the perms above that is all you will need.
 
 ### Support
-My support is limited, but if you find a bug or you have an issue, please open an issue in github and you may ping me on MacAdmins slack and provide me the issue #. No ticket, no laundry. =)
+My support is limited, but if you find a bug or you have an issue, please open an issue in github and you may ping me on MacAdmins slack and provide me the [issue](https://github.com/tempusthales/macOS_scripts/issues) #. 
+No ticket, no laundry. =)
 
 @gil at MacAdmins Slack.  https://macadmins.org 
 If you find my efforts useful buy me Coffee: [https://ko-fi.com/tempusthales](https://ko-fi.com/tempusthales)
