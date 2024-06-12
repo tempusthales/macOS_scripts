@@ -6,6 +6,10 @@ To use it please enter the serial number(s) of the devices you wish to re-instal
 
 If more than one serial please separate them with commas.  Example: serial1, serial2, serial3 etc.
 
+### Shoutout
+* To the awesome [Bart Reardon](https://github.com/bartreardon) for making [swiftDialog](https://github.com/swiftDialog/swiftDialog), which is used heavily on many of my tools.
+* And all the Mac Admins in [https://macadmins.org](https://macadmins.org)
+
 ### Configuration
 
 Change the following variables to match your own.  Or you can update this from **JAMF Parameter Labels**
@@ -41,8 +45,14 @@ Send Computer Remote Command to Install Package (Read)
 PS. Don't use a full fledged admin account, just use the perms above that is all you will need.
 
 ### Support
-My support is limited, but if you find a bug or you have an issue, please open an issue in github and you may ping me on MacAdmins slack and provide me the [issue](https://github.com/tempusthales/macOS_scripts/issues) #. 
-No ticket, no laundry. =)
 
-@gil at MacAdmins Slack.  https://macadmins.org 
+* Please report bugs and submit feature requests on [GitHub](https://github.com/tempusthales/macOS_scripts/issues).
+* Best-effort support for this tool is offered on the [Mac Admins Slack](https://macadmins.org/) (free; registration required.) Just @gil.
+
+### Feature Requests
+
+Submit feature requests on [GitHub](https://github.com/tempusthales/macOS_scripts/issues).
+
+> Please note that while all requests are welcome, finding available cycles to custom-code a feature I won’t use in my production environment is always challenging.
+
 If you find my efforts useful buy me Coffee: [https://ko-fi.com/tempusthales](https://ko-fi.com/tempusthales)
