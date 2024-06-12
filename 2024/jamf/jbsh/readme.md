@@ -6,9 +6,13 @@ To use it please enter the serial number(s) of the devices you wish to re-instal
 
 If more than one serial please separate them with commas.  Example: serial1, serial2, serial3 etc.
 
-### Shoutout
-* To the awesome [Bart Reardon](https://github.com/bartreardon) for making [swiftDialog](https://github.com/swiftDialog/swiftDialog), which is used heavily on many of my tools.
-* And all the Mac Admins in [https://macadmins.org](https://macadmins.org)
+### Special thanks to Bart and swiftDialog!
+* To the awesome [Bart Reardon](https://github.com/bartreardon) for making [swiftDialog](https://github.com/swiftDialog/swiftDialog), an open-source utility written in SwiftUI — that displays a popup dialog which can include content-rich messages for your end-users.
+```
+dialog --icon "SF=steeringwheel" --title "About swiftDialog" --message "**An open source admin utility app for macOS 13+**  \n\nWritten in SwiftUI, swiftDialog displays the content to your users in a modern UI with support for markdown, images, videos and much more …  \n\n\![Car](https://pngimg.com/uploads/tesla_car/tesla_car_PNG43.png)" --height 600 --infotext --moveable
+```
+
+![Car](https://i.imgur.com/TLDWlZS.png)
 
 ### Configuration
 
