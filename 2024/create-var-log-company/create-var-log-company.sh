@@ -1,15 +1,14 @@
 #!/bin/zsh --no-rcs
 # shellcheck shell=bash
 
-# Author: Tempus Thales
+# Author: Gilbert Palau
 # Contributors: 
-# Date: 08/22/2024
-# Version: 2024.08.22-1.2
-# Description: Create directory /var/log/company if it doesn't exist. For standardizing location of script logs.
+# Date: 08/26/2024
+# Version: 2024.08.26-1.2
+# Description: Create directory /var/log/tesla if it doesn't exist. For standardizing location of script logs.
 
 # Script begins here
-company="yourcompany"
-scriptLog="/var/log/${company}/create-var-log-${company}.log"
+scriptLog="/var/log/tesla/create-var-log-tesla.log"
 scriptVersion="v1.2"
 
 # Ensure the script is run with root privileges
@@ -53,5 +52,5 @@ function checkAndCreateDirectory() {
 
 # Main execution
 updateScriptLog "Script version $scriptVersion started."
-checkAndCreateDirectory "/var/log/${company}"
+checkAndCreateDirectory "/var/log/tesla"
 updateScriptLog "Script completed successfully."
