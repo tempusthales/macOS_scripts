@@ -272,7 +272,7 @@ updateScriptLog "\n\n###\n#Orbital Strike Concluded\n###\n ┬─┬ノ( º _ º
 
 sleep 1
 
-touch /var/log/flynn.lives
+touch /var/log/.flynn.lives
 
 exit 0
 
