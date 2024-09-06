@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Author: Tempus Thales
+# # Date: 08/06/2024
 # Contributors: BigMacAdmin@MacAdmins, Tron LLM
-# Date: 08/06/2024
 # Description: Prompt for Reboot
 
 #################################################################
