@@ -4,4 +4,4 @@
 
 Script to display the JAMF LAPS account and password.
 
-Loosely based off the work from [https://github.com/PezzaD84](https://github.com/PezzaD84/macLAPS/tree/main)
+Loosely based off the work from Perry Driscoll: [https://github.com/PezzaD84](https://github.com/PezzaD84/macLAPS/tree/main)
