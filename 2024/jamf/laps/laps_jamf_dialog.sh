@@ -95,7 +95,7 @@ fi
 
 message=$(dialog \
 --title "JAMF LAPS UI" \
---icon "https://i.imgur.com/Y3HzonC.png" --iconsize 100 \
+--icon "https://i.imgur.com/9JddB9Z.png" --iconsize 100 \
 --message "Please enter the name or serial of the device you wish to see the LAPS password for. \n\n You must also provide a reason for viewing the LAPS Password for auditing." \
 --messagefont "name=Arial,size=17" \
 --button1text "Continue" \
@@ -193,7 +193,7 @@ message=$(dialog \
 			
 			dialog \
 			--title "JAMF LAPS UI" \
-			--icon "https://i.imgur.com/W5PzhBr.png" --iconsize 100 \
+			--icon "https://i.imgur.com/OlsFOAO.png" --iconsize 100 \
 			--message "The JAMF LAPS Account details for $name1 are:  \n\n Username: $LAPSUSER  \n Password: $PASSWD \n\n This message will close after 10seconds." \
 			--messagefont "name=Arial,size=17" \
 			--timer \
@@ -281,7 +281,7 @@ message=$(dialog \
 	"summary": "Admin has been used",
 	"sections": [{
 		"activityTitle": "JAMF LAPS Password Requested",
-		"activityImage": "https://i.imgur.com/W5PzhBr.png",
+		"activityImage": "https://i.imgur.com/9JddB9Z.png",
 		"facts": [{
 			"name": "Device Name:",
 			"value": "'"$name1"'"
