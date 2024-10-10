@@ -6,6 +6,13 @@
 # Version: 2024-09-1.2
 # Description: Sets up Desktop Picture for logged in user
 
+#####################
+# Variables
+#####################
+
+desktop_pictures="/Users/${loggedInUser}/Library/Application Support/com.apple.desktop.photos"
+
+#####################
 # Pre-flight Checks
 #####################
 
@@ -84,7 +91,6 @@ function desktopprCheck() {
 }
 
 # change this path to match the location on your system
-desktop_pictures="/Library/Desktop Pictures/"
 desktoppr="/usr/local/bin/desktoppr"
 
 if [[ ! -x ${desktoppr} ]]; then
