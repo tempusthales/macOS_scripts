@@ -27,7 +27,7 @@ function updateScriptLog() {
 
 # Pre-flight Check: Logging Preamble
 scriptVersion="1.0"
-updateScriptLog "\n\n###\n# Setup Your Mac (${scriptVersion})\n# https://inside.tesla.com/en-US/help-center#resources-IT\n###\n"
+updateScriptLog "\n\n###\n# Fast, Good, Cheap (${scriptVersion})\n# https://fastgood.cheap/ \n###\n"
 updateScriptLog "PRE-FLIGHT CHECK: Initiating …"
 
 # Pre-flight Check: Confirm script is running under bash
