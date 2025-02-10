@@ -1,9 +1,10 @@
 #!/bin/bash
 
 #################################################################################################################
-# Name:                       get_it_assistance.sh
-# Purpose:                    This creates a .webloc file on user's desktop
-# Notes:                      Based off the script written by Erik Berglund (https://github.com/erikberglund)
+# Name:                       	get_it_assistance.sh
+# Author: 			Tempus Thales
+# Purpose:                    	This creates a .webloc file on user's desktop
+# Notes:                      	Based off the script written by Erik Berglund (https://github.com/erikberglund)
 #################################################################################################################
 # Acquire variables related to user
 #################################################################################################################
@@ -17,22 +18,27 @@ currentUserHome=$(dscl . -read /Users/$currentUser NFSHomeDirectory | cut -d " "
 log_path="/var/log/company_name"
 log_file="com.company_name.it.assistance.logging.log"
 
-logMessage () {
+logMessage() {
+  # Ensure log_path is set
+  [ -z "$log_path" ] && log_path="/var/log/default"
 
-  mkdir -p $log_path
-  user=$((who -m | awk '{print $1}') 2>&1)
-  date_set="$((date +%Y-%m-%d..%H:%M:%S-%z) 2>&1)"
+  mkdir -p "$log_path"
 
-  if [[ "$log_file" == "" ]]; then
-    # write to stdout (capture by Jamf script logging)
+  # Correct command substitution
+  date_set="$(date +%Y-%m-%d..%H:%M:%S-%z 2>&1)"
+  user="$(who -m | awk '{print $1;}' 2>&1)"
+
+  if [[ -z "$log_file" ]]; then
+    # Write to stdout (captured by Jamf script logging)
     echo "$date_set    $user    ${0##*/}    $1"
   else
-    # write local logs
-    echo "$date_set    $user    ${0##*/}    $1" >> $log_path/$log_file
-    # write to stdout (capture by Jamf script logging)
+    # Write to local logs
+    echo "$date_set    $user    ${0##*/}    $1" >> "$log_path/$log_file"
+    # Also write to stdout
     echo "$date_set    $user    ${0##*/}    $1"
   fi
 }
+
 #####################################################################################
 # Create /Library/.company_name/Icons/ if needed
 #####################################################################################
