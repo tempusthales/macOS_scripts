@@ -1,6 +1,7 @@
 #!/bin/bash
 ##################################################################################################################
 # Name:                       ccb_pref_en_remote.sh
+# Author:                      Tempus Thales
 # Purpose:                    Enables Remote Access
 ###################################################################################################################
 # GLOBAL VARIABLES
@@ -19,22 +20,27 @@ kickstart="/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/R
 # ESTABLISH STANDARDIZED LOCAL LOGGING LOGIC
 ##################################################################################################################
 
-logMessage () {
+logMessage() {
+  # Ensure log_path is set
+  [ -z "$log_path" ] && log_path="/var/log/default"
 
-  mkdir -p $log_path
+  mkdir -p "$log_path"
 
-  date_set="$((date +%Y-%m-%d..%H:%M:%S-%z) 2>&1)"
-  user="$((who -m | awk '{print $1;}') 2>&1)"
-  if [[ "$log_file" == "" ]]; then
-    # write to stdout (capture by Jamf script logging)
+  # Correct command substitution
+  date_set="$(date +%Y-%m-%d..%H:%M:%S-%z 2>&1)"
+  user="$(who -m | awk '{print $1;}' 2>&1)"
+
+  if [[ -z "$log_file" ]]; then
+    # Write to stdout (captured by Jamf script logging)
     echo "$date_set    $user    ${0##*/}    $1"
   else
-    # write local logs
-    echo "$date_set    $user    ${0##*/}    $1" >> $log_path/$log_file
-    # write to stdout (capture by Jamf script logging)
+    # Write to local logs
+    echo "$date_set    $user    ${0##*/}    $1" >> "$log_path/$log_file"
+    # Also write to stdout
     echo "$date_set    $user    ${0##*/}    $1"
   fi
 }
+
 logMessage "Script Started"
 ##################################################################################################################
 # SCRIPT EXECUTION
